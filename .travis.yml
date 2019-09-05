@@ -18,7 +18,7 @@ jobs:
       julia: 1.1
       os: linux
       script:
-        - julia --project= test/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
+        - julia --project= test/ -e 'using Pkg; Pkg.develop(PackageSpec(path="/home/travis/build/path_to_private_Dependency")); Pkg.instantiate()'
       name: "HTML"
       after_success: skip
 
