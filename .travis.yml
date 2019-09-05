@@ -18,8 +18,8 @@ jobs:
       julia: 1.2
       os: osx
       script:
-        - julia --project=test/ -e 'using Pkg;Pkg.add("Zygote")'
-        - julia --project=test/ -e 'using Pkg;Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
+        - julia --project=test/runtests.jl -e 'using Pkg;Pkg.add("Zygote")'
+        - julia --project=test/runtests.jl -e 'using Pkg;Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
         - julia --project=test/runtests.jl deploy
       name: "HTML"
       after_success: skip
