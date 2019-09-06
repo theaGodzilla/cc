@@ -20,8 +20,8 @@ Coverage:
 matrix:
  allow_failures:
  - julia: nightly
-install:
-  - git clone git@github.com:supremacyfuture/VQC.git
+# install:
+#   - git clone git@github.com:supremacyfuture/VQC.git
 
 jobs:
   include:
