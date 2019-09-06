@@ -20,8 +20,9 @@ Coverage:
 matrix:
  allow_failures:
  - julia: nightly
-# install:
-#   - Zygote install
+install:
+  - git clone git@github.com:supremacyfuture/VQC.git
+
 jobs:
   include:
     - stage: "Documentation"
