@@ -21,6 +21,7 @@ matrix:
  allow_failures:
  - julia: nightly
 # install:
+#   - Pkg.add("Zygote")
 #   - git clone git@github.com:supremacyfuture/VQC.git
 
 jobs:
@@ -29,7 +30,7 @@ jobs:
       julia: 1.2
       os: osx
       script:
-          - julia -e 'using Pkg; Pkg.activate(pwd()); Pkg.instantiate(); Pkg.build("cc"); Pkg.test("cc");Pkg.add("Zygote")'
+          - julia -e 'using Pkg; Pkg.add("Zygote"); Pkg.activate(pwd()); Pkg.instantiate(); Pkg.build("cc"); Pkg.test("cc/test/runtests.jl");'
         # - julia --project=test/runtests.jl -e 'using Pkg;Pkg.add("Zygote")'
         # - julia --project=test/runtests.jl -e 'using Pkg;Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
         # - julia --project=test/runtests.jl deploy
