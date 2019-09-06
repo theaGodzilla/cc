@@ -7,11 +7,21 @@ julia:
   - 1.2
   - nightly
 notifications:
-  email: false
+  email:
+    recipients:
+    - 464843022@qq.com
+    on_success: always
+    on_failure: always
+
+Coverage:
+  codecov: true
+  coveralls: true
+
 matrix:
  allow_failures:
  - julia: nightly
-
+install:
+  - Zygote install
 jobs:
   include:
     - stage: "Documentation"
