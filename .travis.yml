@@ -20,8 +20,8 @@ Coverage:
 matrix:
  allow_failures:
  - julia: nightly
-install:
-  - Zygote install
+# install:
+#   - Zygote install
 jobs:
   include:
     - stage: "Documentation"
