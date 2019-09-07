@@ -3,39 +3,21 @@ os:
   - linux
   - osx
 julia:
-  - 1.1
-  - 1.2
   - nightly
+  - 1.0.3
+codecov: true
+coveralls: true
 notifications:
-  email:
-    recipients:
-    - 464843022@qq.com
-    on_success: always
-    on_failure: always
-
-Coverage:
-  codecov: true
-  coveralls: true
-
+  email: false
 matrix:
  allow_failures:
  - julia: nightly
-install:
-  - using Pkg;Pkg.add("Zygote")
-#   - git clone git@github.com:supremacyfuture/VQC.git
+git:
+  depth: 99999999
 
-jobs:
-  include:
-    - stage: "Documentation"
-      julia: 1.2
-      os: osx
-      script:
-          - julia -e 'using Pkg; Pkg.add("Zygote"); Pkg.activate(pwd()); Pkg.instantiate(); Pkg.build("cc"); Pkg.test("cc/test/runtests.jl");'
-        # - julia --project=test/runtests.jl -e 'using Pkg;Pkg.add("Zygote")'
-        # - julia --project=test/runtests.jl -e 'using Pkg;Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
-        # - julia --project=test/runtests.jl deploy
-      name: "HTML"
-      after_success: skip
+script:
+  - julia --project= -e 'using Pkg; Pkg.add("Zygote"); Pkg.develop(PackageSpec(path=pwd()));Pkg.instantiate()'
+  - julia --project=test/ test/runtests.jl deploy
 
 after_success:
   - julia -e 'using Pkg; Pkg.add("Coverage"); using Coverage; Codecov.submit(process_folder())'
